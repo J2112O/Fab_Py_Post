@@ -13,10 +13,8 @@ sheet = client.open('Fab Tracking')
 ba_sheet = sheet.worksheet('bend_assets') # Assigning the bend_assets sheet here.
 
 try:
-    connect_str = "host=127.0.0.1 dbname=fab_tracking user=j2112o " + \
-            "port=5433 password={}".format(cons.ft_pass)
     # use our connection values to establish a connection
-    conn = pg2.connect(connect_str)
+    conn = pg2.connect(cons.connect_str)
     # create a psycopg2 cursor that can execute queries
     cursor = conn.cursor()
     # create a new table with a single column called "name"
@@ -25,14 +23,13 @@ except Exception as e:
     print(e)
 
 def main():
-    # creating a list of all the rows from the get_aa_view() function from the all_attributes view
-    #an_insert = [row for row in tq.get_aa_view(cursor)]
-    # creating a list of all the rows from the get_bnd_assets() function from the bend_assets table.
+    # Creating a list through list comprehensions based on the list returned from the get_bnd_assets() function.
     an_insert = [row for row in tq.get_bnd_assets(cursor)]
     for x in an_insert:
-        ba_sheet.insert_row(x, 2) # beginning the insert of each row at the 2nd row since the first row is 'freeze' for column headers
-    if cursor:
-        cursor.close()
+        ba_sheet.insert_row(x, 2) # beginning the insert of each row at the 2nd
+    if cursor:                    # row since the first row is in 'freeze' mode for column headers
+        cursor.close()            # Need to look at adding in always subtracting one from how many
+                                  # rows are present in the sheet to.
 
 if __name__=="__main__":
     main()
