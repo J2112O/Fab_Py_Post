@@ -1,29 +1,29 @@
 #!/usr/bin/python3.6
 
-import psycopg2 as pg2
-import constants as cons # from the constants.py file
+import constants as cons # Importing the constants.py file
 import csv
 
-path = "/home/bigdaddy/Practice_Data/Daily_Pipe_Tally_python_staging.csv"
+# This variable holds the path that contains the csv file from constants.py
+path = cons.staging_path
 
-data_file = open(path, newline='')
-reader = csv.reader(data_file)
+data_file = open(path, newline='') # Opening and striping any newlines
+reader = csv.reader(data_file) # Creating a reader obj
 
-header = next(reader)
+header = next(reader) # Skipping the header
 
-data = []
-for row in reader:
-    #row = [pipe_id, kind, jt_num, heat, pipe_length, wall_thick, deg]
-    custom_pipe_id = str(row[0])
-    pipe_kind = str(row[1])
-    pipe_jt_num = str(row[2])
-    pipe_ht = str(row[3])
-    pipe_lt = float(row[4])
-    pipe_wt = float(row[5])
-    pipe_deg = float(row[6])
+def copy_insert():
+    data = []
+    for row in reader:
+        # row = [pipe_id, kind, jt_num, heat, pipe_length, wall_thick, deg]
+        custom_pipe_id = str(row[0]) # Casting to string
+        pipe_kind = str(row[1])# Casting to string
+        pipe_jt_num = str(row[2])# Casting to string
+        pipe_ht = str(row[3])# Casting to string
+        pipe_lt = float(row[4])# Casting to float
+        pipe_wt = float(row[5])# Casting to float
+        pipe_deg = float(row[6])# Casting to float
 
-    data.append([custom_pipe_id,pipe_kind,pipe_jt_num,pipe_ht,pipe_lt,
-                 pipe_wt,pipe_deg])
-
-for row in data:
-    print(row)
+        # Appending the correct data types for the columns to the 'data' list
+        data.append([custom_pipe_id,pipe_kind,pipe_jt_num,pipe_ht,pipe_lt,
+                    pipe_wt,pipe_deg])
+    return data
