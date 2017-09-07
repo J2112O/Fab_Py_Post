@@ -17,11 +17,16 @@ except pg2.DatabaseError as e:
 
 
 def main():
-    # cons.staging_path contains the path to the .csv file
-    with open(cons.staging_path) as f:
-        cursor.copy_expert(SQL,f)
-        conn.commit()
-        cursor.close()
+    try:
+        # cons.staging_path contains the folder path to the
+        # Daily_Pipe_Tally_python.csv file
+        with open(cons.staging_path) as f:
+            cursor.copy_expert(SQL,f)
+            conn.commit()
+            cursor.close()
+    except pg2.DatabaseError as e:
+        print("Uh-oh. Insert issues. Please see error message.")
+        print(e)
 
 
 if __name__ == "__main__":
