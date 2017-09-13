@@ -21,8 +21,7 @@ except pg2.DatabaseError as e:
 
 def main():
     try:
-        # cons.staging_path contains the folder path to the
-        # Daily_Pipe_Tally_python.csv file
+        # staging path contains the path to Daily_Pipe_Tally_python.csv file
         with open(staging_path) as f:
             cursor.copy_expert(SQL,f)
             conn.commit()
@@ -34,4 +33,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
