@@ -43,8 +43,9 @@ def sht_pa():
 
 
 def main():
-    choice = str(input("Which Google Sheet do you wish to upload data to? " \
-                "All (ALL), pup_assets (PUP) or bend_assets (BEND). ")).upper()
+    print("Hello World. Just a text")
+    #choice = str(input("Which Google Sheet do you wish to upload data to? " \
+                #"All (ALL), pup_assets (PUP) or bend_assets (BEND). ")).upper()
     #an_insert = [row for row in tq.get_pup_assets(cursor)]
     #for x in an_insert:
         #pa_sheet.insert_row(x, 2)
