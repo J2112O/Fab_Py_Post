@@ -1,2 +1,4 @@
 /client_secret.json
 /constants.py
+/db_connection_info.py
+/Hiking_Stats/creds.py
