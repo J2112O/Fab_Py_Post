@@ -98,16 +98,7 @@ def collect_daily_stats():
         else:
             break
 
-    print(date_obj)
-    print(cal_burned)
-    print(miles_walked)
-    print(mph)
-    print(dur_obj)
-    print(additional_weight)
-    print(weight_amount)
-    print(trekking_poles)
-    print(shoe_id)
-    print(trail_id)
+    return date_obj, cal_burned, miles_walked, mph, dur_obj, additional_weight, weight_amount, trekking_poles, shoe_id, trail_id
 
 
 if __name__ == '__main__':
