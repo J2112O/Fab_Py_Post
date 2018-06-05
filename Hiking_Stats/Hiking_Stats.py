@@ -2,7 +2,10 @@
 
 
 class HikingStats:
-    """docstring for HikingStats"""
+    """Class for HikingStats
+    
+    Class of all values for the hiking stats to insert
+    """
 
     def __init__(self, date_obj, cal_burned, miles_walked, mph, dur_obj, additional_weight, weight_amount, trekking_poles, shoe_id, trail_id):
         self.date_obj = date_obj

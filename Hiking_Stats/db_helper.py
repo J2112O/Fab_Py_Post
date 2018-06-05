@@ -5,13 +5,20 @@ conn = pg2.connect(cr.connect_creds)
 curs = conn.cursor()
 
 
-def insert_hiking_stats(p_date, p_cal_burned, p_miles_walked, p_mph, p_duration, p_additonal_weight, p_weight_amt, p_trekking_poles, p_shoe_id, p_trail_id):
+def insert_hiking_stats(tup_of_values):
+    """Function for inserting values.
+
+    Function calls the fit_hiking_ins() database funtions and inserts values
+
+    Arguments:
+            tup_of_values {[tuple]} -- [a tuple containing values for insert]
+    """
     with curs as c:
-        HIKING_STATS_SQL = """SELECT fit_hiking_ins();"""
-        c.execute(HIKING_STATS_SQL)
-        c.commit()
-        c.close()
-        conn.close()
+        HIKING_STATS_SQL = """SELECT fit_hiking_ins(%s, %s, %s, %s, %s, %s, %s, %s, %s, %s);"""
+    c.execute(HIKING_STATS_SQL, *tup_of_values)
+    c.commit()
+    c.close()
+    conn.close()
 
 
 curs.close()

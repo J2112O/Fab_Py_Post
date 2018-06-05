@@ -3,7 +3,13 @@ from datetime import date, time
 
 
 def collect_daily_stats():
-    """This function collects all daily hiking stats for insert into the database.
+    """Collects user input
+
+
+    Raises:
+        e -- [description]
+        e -- [description]
+        e -- [description]
     """
     while True:
         try:
@@ -97,4 +103,4 @@ def collect_daily_stats():
         else:
             break
 
-    return v_date_obj, v_cal_burned, v_miles_walked, v_mph, v_dur_obj, v_additional_weight, v_weight_amount, v_trekking_poles, v_shoe_id, v_trail_id
+    return (v_date_obj, v_cal_burned, v_miles_walked, v_mph, v_dur_obj, v_additional_weight, v_weight_amount, v_trekking_poles, v_shoe_id, v_trail_id,)
