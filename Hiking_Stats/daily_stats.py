@@ -43,20 +43,20 @@ def collect_daily_stats():
 
     while True:
         try:
-            v_mph = float(input("Pace (in mph): "))
-        except ValueError:
-            print("Decimal numbers only.")
-        else:
-            break
-
-    while True:
-        try:
             duration = str(input("Duration in hours, minutes, and seconds (Format hh:mm:ss): "))
             d_split = [int(item) for item in duration.split(':')]
             # Creating the time object to be stored by passing in the appropriate casted list elements ie(index[0] is hour, etc...)
             v_dur_obj = datetime.time(d_split[0], d_split[1], d_split[2])
         except Exception as e:
             raise e
+        else:
+            break
+
+    while True:
+        try:
+            v_mph = float(input("Pace (in mph): "))
+        except ValueError:
+            print("Decimal numbers only.")
         else:
             break
 
@@ -103,4 +103,4 @@ def collect_daily_stats():
         else:
             break
 
-    return (v_date_obj, v_cal_burned, v_miles_walked, v_mph, v_dur_obj, v_additional_weight, v_weight_amount, v_trekking_poles, v_shoe_id, v_trail_id,)
+    return (v_date_obj, v_cal_burned, v_miles_walked, v_dur_obj, v_mph, v_additional_weight, v_weight_amount, v_trekking_poles, v_shoe_id, v_trail_id,)

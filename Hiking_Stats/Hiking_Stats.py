@@ -3,7 +3,7 @@
 
 class HikingStats:
     """Class for HikingStats
-    
+
     Class of all values for the hiking stats to insert
     """
 
